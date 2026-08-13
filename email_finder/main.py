@@ -123,12 +123,10 @@ class FilePathCompleter(Completer):
                     if item.lower().startswith(basename.lower()):
                         full_path = os.path.join(dirname, item)
                         if os.path.isdir(full_path):
-                            # Add trailing slash for directories
                             completion_text = item + '/'
                         else:
                             completion_text = item
 
-                        # Calculate display text
                         display = os.path.join(dirname, item) if dirname != '.' else item
                         if os.path.isdir(full_path):
                             display += '/'
@@ -140,20 +138,6 @@ class FilePathCompleter(Completer):
                         )
         except Exception:
             pass
-
-
-def input_with_completion(prompt_text: str) -> str:
-    """Get input with tab completion using prompt_toolkit if available."""
-    if PROMPT_TOOLKIT_AVAILABLE:
-        try:
-            completer = FilePathCompleter()
-            return pt_prompt(prompt_text, completer=completer)
-        except Exception:
-            # Fallback to regular input if prompt_toolkit fails
-            return input(prompt_text)
-    else:
-        # Fallback to regular input
-        return input(prompt_text)
 
 
 def input_simple(prompt_text: str) -> str:
@@ -449,23 +433,6 @@ def get_file_path_from_user(prompt_text: str) -> Optional[str]:
     """
     Get file path from user with tab completion using prompt_toolkit.
     """
-    # Show available files in current directory as hint
-    print("\n[!] Available files in current directory:")
-    try:
-        files = [f for f in os.listdir('.') if os.path.isfile(f)]
-        if files:
-            for f in files[:5]:
-                print(f"    • {f}")
-            if len(files) > 5:
-                print(f"    ... and {len(files) - 5} more")
-        else:
-            print("    (No files found)")
-    except:
-        pass
-
-    print("[!] Press TAB to auto-complete file paths")
-    print("[!] Type the full path or use relative path (e.g., ./names.txt or /home/user/names.txt)")
-
     try:
         if PROMPT_TOOLKIT_AVAILABLE:
             completer = FilePathCompleter()
@@ -585,13 +552,7 @@ def batch_mode():
     print("BATCH MODE")
     print("=" * 50)
 
-    if PROMPT_TOOLKIT_AVAILABLE:
-        print("\n[!] Press TAB to auto-complete file paths (prompt-toolkit enabled)")
-    else:
-        print("\n[!] Install prompt-toolkit for better tab completion:")
-        print("    pip install prompt-toolkit")
-
-    # Get file path
+    # Get file path with tab completion
     file_path = get_file_path_from_user("Enter path to names file (one name per line): ")
     if not file_path:
         print("[-] No file provided. Aborting.")
@@ -873,3 +834,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
