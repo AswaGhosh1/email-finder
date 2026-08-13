@@ -747,12 +747,12 @@ def show_help():
 ╚══════════════════════════════════════════════════════════════╝
 
 DESCRIPTION:
-    Interactive email discovery tool that finds corporate email
+    An OSINT interactive email discovery tool that finds corporate email
     addresses by testing common patterns against SMTP servers.
 
 USAGE:
     email-finder              # Run in interactive mode
-    python3 app.py            # Alternative run command
+
 
 COMMANDS:
     No commands needed - just run the tool and follow the prompts!
@@ -760,7 +760,7 @@ COMMANDS:
 FEATURES:
     • Single name lookup
     • Batch processing from text file with TAB completion
-    • Automatic domain discovery (.com, .co.in, .in, etc.)
+    • Automatic domain discovery
     • Smart country detection
     • Catch-all domain detection
     • Results saved to file
@@ -772,21 +772,14 @@ EXAMPLES:
     > Enter full name: John Smith
     > Enter company name: Google
 
-    # Batch processing
-    $ email-finder
-    > Select mode: 2
-    > Enter path to names file: names.txt
-    > Enter company name: Microsoft
 
 REQUIREMENTS:
     Python 3.6+
     dnspython library
 
-INSTALLATION:
-    pip install dnspython
 
 MORE INFO:
-    GitHub: https://github.com/yourusername/email-finder
+    GitHub: https://github.com/AswaGhosh1/email-finder
     """)
 
 
