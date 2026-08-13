@@ -20,18 +20,6 @@
 - ⚡ **Fast SMTP verification** - Direct RCPT TO checks
 - 🔄 **TAB completion** - Auto-complete file paths in batch mode
 
----
-
-## 📦 Installation
-
-### From GitHub (Recommended)
-
-```bash
-git clone https://github.com/AswaGhosh1/email-finder.git
-cd email-finder
-pip install -e .
-```
-
 ### For Kali Linux
 
 ```bash
@@ -50,47 +38,6 @@ email-finder
 
 ### Single Name Lookup
 
-```bash
-email-finder --single "John Smith" "Google"
-```
-
-### Batch Mode
-
-```bash
-# Create a names file
-echo "John Smith" > names.txt
-echo "Jane Doe" >> names.txt
-
-# Run batch mode
-email-finder --batch names.txt "Microsoft"
-```
-
-### Help & Version
-
-```bash
-email-finder --help
-email-finder --version
-```
-
-## 📊 Example Output
-
-```bash
-$ email-finder --single "John Smith" "Google"
-
-[*] Searching for valid domain for: Google
-[*] Detected possible country: US
-[*] Testing 21 domain variants...
-[+] Found valid domain: google.com
-
-[+] Using domain: google.com
-[*] Looking up MX record for google.com...
-[+] Using mail server: mail.google.com
-
-[*] Checking whether domain is catch-all...
-[*] Testing 12 possible email patterns for John Smith...
-
-[+] Valid email found: john.smith@google.com
-```
 
 ## 🔧 Requirements
 
